@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const clients = [
+  "Puzzle.io", "Keepsafe", "Brain.fm", "OneNotary",
+  "UNAGI", "Thistle", "MATRIX Powerwatch", "Oui Shave", "Homeaglow"
+];
+
+const services = [
+  {
+    title: "Affiliate Marketing",
+    description: "Diversified, incrementality-driven affiliate ecosystems integrating loyalty, content, checkout, fintech, and member networks."
+  },
+  {
+    title: "Paid Media Strategy",
+    description: "Messaging testing frameworks for Meta, Google, TikTok, and LinkedIn — plus funnel math and budget allocation discipline."
+  },
+  {
+    title: "Operator-Level Execution",
+    description: "Forecasting and pacing models, investor-ready reporting, and KPI dashboards leadership actually understands."
+  }
+];
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Growth Marketing Agency</p>
+        <h1>Marketing,<br />finally simplified.</h1>
+        <p class="subheadline">Clear strategies for direct and actionable growth.</p>
+        <a href="/contact-us" class="btn-primary">Let's Go</a>
+      </div>
+    </section>
+
+    <!-- Value prop -->
+    <section class="value-prop">
+      <div class="container">
+        <h2>We help great companies grow.</h2>
+        <p>Growth leadership for founders who want truth, not vanity metrics.</p>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+      <div class="container">
+        <h2 class="section-title">What We Do</h2>
+        <div class="services-grid">
+          {services.map((service, i) => (
+            <div class="service-card">
+              <span class="service-number">0{i + 1}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="clients">
+      <div class="container">
+        <p class="clients-label">Brands we've grown</p>
+        <div class="clients-grid">
+          {clients.map(client => (
+            <div class="client-name">{client}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Micro Audit -->
+    <section class="audit">
+      <div class="container">
+        <div class="audit-inner">
+          <div class="audit-text">
+            <span class="eyebrow">Free Micro Audit</span>
+            <h2>Find your hidden wins.</h2>
+            <p>A focused channel analysis that identifies hidden opportunities and quick wins — no strings attached.</p>
+            <a href="/contact-us" class="btn-primary">Request Your Audit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 7rem 0 6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  .subheadline {
+    font-size: 1.25rem;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.8;
+  }
+
+  /* Value prop */
+  .value-prop {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .value-prop h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .value-prop p {
+    font-size: 1.1rem;
+    color: var(--gray);
+  }
+
+  /* Services */
+  .services {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .service-card:hover {
+    border-color: var(--black);
+    transform: translateY(-2px);
+  }
+
+  .service-number {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* Clients */
+  .clients {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--light-gray);
+  }
+
+  .clients-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .clients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2.5rem;
+  }
+
+  .client-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--gray);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .client-name:hover {
+    color: var(--black);
+  }
+
+  /* Audit */
+  .audit {
+    padding: 7rem 0;
+  }
+
+  .audit-inner {
+    max-width: 600px;
+  }
+
+  .audit h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .audit p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+</style>

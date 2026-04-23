@@ -2,12 +2,18 @@
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
 
 const {
-  title = "NAC Worldwide — Growth Marketing Agency",
-  description = "Clear strategies for direct and actionable growth. Affiliate marketing, paid media strategy, and operator-level execution.",
+  title = "NAC Worldwide — Nicole Lehmann-Haupt, AI-Powered Growth Marketing",
+  description = "Nicole Lehmann-Haupt runs NAC Worldwide — AI-powered growth marketing for venture-backed companies. Affiliate, paid media, and operator-level execution.",
+  canonical,
 } = Astro.props;
+
+const siteUrl = "https://nac-worldwide.com";
+const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+const ogImage = `${siteUrl}/001-F1ABeFxYiak.jpeg`;
 ---
 
 <!doctype html>
@@ -16,7 +22,56 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="NAC Worldwide" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://nac-worldwide.com/#org",
+          "name": "NAC Worldwide",
+          "url": "https://nac-worldwide.com",
+          "logo": "https://nac-worldwide.com/favicon.svg",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "nicole@nac-worldwide.com",
+            "telephone": "+13104608098",
+            "contactType": "customer service"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://nac-worldwide.com/#nicole",
+          "name": "Nicole Lehmann-Haupt",
+          "jobTitle": "Founder & Growth Marketing Operator",
+          "worksFor": { "@id": "https://nac-worldwide.com/#org" },
+          "url": "https://nac-worldwide.com",
+          "email": "nicole@nac-worldwide.com"
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

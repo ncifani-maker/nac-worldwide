@@ -22,6 +22,16 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
+    <!-- PRESS -->
+    <section class="nacw-press">
+      <div class="nacw-wrap">
+        <span class="nacw-press-label">As seen in</span>
+        <div class="nacw-press-logos">
+          <img src="/fast-company.svg" alt="Fast Company" class="nacw-press-logo" />
+        </div>
+      </div>
+    </section>
+
     <!-- SHIFT -->
     <section class="nacw-shift">
       <div class="nacw-wrap">
@@ -36,7 +46,9 @@ import Footer from '../components/Footer.astro';
     <section class="nacw-nicole" id="nacw-nicole">
       <div class="nacw-wrap">
         <div class="nacw-nicole-grid">
-          <div class="nacw-nicole-photo" style="background-image: url('/001-F1ABeFxYiak.jpeg'); background-size: 85%; background-position: center center; background-repeat: no-repeat;"></div>
+          <div class="nacw-nicole-photo">
+            <img src="/001-F1ABeFxYiak.jpeg" alt="Nicole Lehmann-Haupt, founder of NAC Worldwide" />
+          </div>
           <div>
             <h2>Hi, I'm Nicole.</h2>
             <p>I've spent the last decade running marketing for venture-backed companies — fintech, SaaS, consumer. I've built teams, owned P&Ls, shipped campaigns, survived growth audits, and reported to boards.</p>
@@ -258,6 +270,40 @@ import Footer from '../components/Footer.astro';
   .nacw-hero .nacw-btn-secondary { color: #fff; border-color: #c9d3e0; }
   .nacw-hero .nacw-btn-secondary:hover { background: #fff; color: var(--ink); }
 
+  /* PRESS */
+  .nacw-press {
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 36px 0;
+  }
+  .nacw-press .nacw-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .nacw-press-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .nacw-press-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nacw-press-logo {
+    height: 50px;
+    width: auto;
+    width: auto;
+    opacity: 0.6;
+    filter: grayscale(1);
+    transition: opacity 0.2s;
+  }
+  .nacw-press-logo:hover { opacity: 0.85; }
+
   /* SHIFT */
   .nacw-shift { padding: 110px 0; background: var(--bg); border-bottom: 1px solid var(--line); }
   .nacw-shift h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.15; margin: 0 0 1.25rem; font-weight: 800; letter-spacing: -0.01em; max-width: 880px; }
@@ -270,11 +316,14 @@ import Footer from '../components/Footer.astro';
     aspect-ratio: 4/5;
     background: #d6cfc0;
     border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #8a8372;
-    font-size: 13px;
+    overflow: hidden;
+  }
+  .nacw-nicole-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
   .nacw-nicole h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); line-height: 1.15; margin: 0 0 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
   .nacw-nicole p { font-size: 1rem; color: #2a3340; margin: 0 0 1rem; }
